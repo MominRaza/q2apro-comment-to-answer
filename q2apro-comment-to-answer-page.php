@@ -1,15 +1,5 @@
 <?php
 /*
-	Plugin Name: Comment to Answer
-	Plugin URI: https://github.com/q2apro/q2a-comment-to-answer
-	Plugin Description: Converts a comment to an answer, optionally moves the succeeding comments
-	Plugin Version: 0.4
-	Plugin Date: 2014-02-23
-	Plugin Author: q2apro.com
-	Plugin Author URI: http://www.q2apro.com/
-	Plugin License: GPLv3
-	Plugin Minimum Question2Answer Version: 1.5
-	Plugin Update Check URI: https://raw.github.com/q2apro/q2a-comment-to-answer/master/qa-plugin.php
 
 	This program is free software. You can redistribute and modify it 
 	under the terms of the GNU General Public License.
@@ -75,16 +65,7 @@
 
 			// page title
 			$qa_content['title'] = qa_lang('q2apro_comment_to_answer_lang/page_title'); 
-
-			// some CSS styling
-			$qa_content['custom'.++$c] = '<style type="text/css">
-				#convdiv, .qa-main p, .qa-main a, .qa-main input { font-size:14px; }
-				#convdiv { border-left:10px solid #ABF;margin:20px 0 0 5px;padding:5px 10px; }
-				#withthread { margin-left:20px; }
-				.qa-main h1 { margin-bottom:40px; }
-			</style>';
-			
-			
+						
 			// REQUEST: if we have convert data, convert
 			$commentid = qa_post_text('commentid');
 			$withthread = qa_post_text('withthread'); // checkbox
@@ -103,7 +84,7 @@
 						$wrongid_link = '→ <a target="_blank" href="'.qa_opt('site_url').$commentid.'">'.qa_lang('q2apro_comment_to_answer_lang/question_id').': '.$commentid.'</a>';
 					}
 					$qa_content['custom'.++$c]= '<p>'.qa_lang('q2apro_comment_to_answer_lang/error0').' '.$wrongid_link.'</p>';
-					$qa_content['custom'.++$c]= '<a href="./convertcomment" class="btnblue">'.qa_lang('q2apro_comment_to_answer_lang/return').'</a>';
+					$qa_content['custom'.++$c]= '<a href="./convertcomment" class="qa-form-light-button">'.qa_lang('q2apro_comment_to_answer_lang/return').'</a>';
 					return $qa_content;
 				}
 				
@@ -157,7 +138,7 @@
 				else {
 					// content output error
 					$qa_content['custom'.++$c]= '<p>'.qa_lang('q2apro_comment_to_answer_lang/error3').'</p>';
-					$qa_content['custom'.++$c]= '<a href="./convertcomment" class="btnblue">'.qa_lang('q2apro_comment_to_answer_lang/return').'</a>';
+					$qa_content['custom'.++$c]= '<a href="./convertcomment" class="qa-form-light-button">'.qa_lang('q2apro_comment_to_answer_lang/return').'</a>';
 					return $qa_content;
 				}
 
@@ -196,20 +177,20 @@
 						
 						// content output success
 						$qa_content['custom'.++$c]= '<p>'.qa_lang('q2apro_comment_to_answer_lang/success').' → <a target="_blank" href="'.qa_opt('site_url').$questionid.'?show='.$commentid.'#a'.$commentid.'">ID: '.$commentid.'</a></p>';
-						$qa_content['custom'.++$c]= '<a href="./convertcomment" class="btnblue">'.qa_lang('q2apro_comment_to_answer_lang/return').'</a>';
+						$qa_content['custom'.++$c]= '<a href="./convertcomment" class="qa-form-light-button">'.qa_lang('q2apro_comment_to_answer_lang/return').'</a>';
 						return $qa_content;
 					}
 					else {
 						// content output error
 						$qa_content['custom'.++$c]= '<p>'.qa_lang('q2apro_comment_to_answer_lang/error1').'</p>';
-						$qa_content['custom'.++$c]= '<a href="./convertcomment" class="btnblue">'.qa_lang('q2apro_comment_to_answer_lang/return').'</a>';
+						$qa_content['custom'.++$c]= '<a href="./convertcomment" class="qa-form-light-button">'.qa_lang('q2apro_comment_to_answer_lang/return').'</a>';
 						return $qa_content;
 					}
 				}
 				else {
 					// content output error
 					$qa_content['custom'.++$c]= '<p>'.qa_lang('q2apro_comment_to_answer_lang/error2').'</p>';
-					$qa_content['custom'.++$c]= '<a href="./convertcomment" class="btnblue">'.qa_lang('q2apro_comment_to_answer_lang/return').'</a>';
+					$qa_content['custom'.++$c]= '<a href="./convertcomment" class="qa-form-light-button">'.qa_lang('q2apro_comment_to_answer_lang/return').'</a>';
 					return $qa_content;
 				}
 			}
@@ -218,11 +199,15 @@
 			/* default page with convert dialog */
 			$qa_content['custom'.++$c] = '<div id="convdiv">
 											<form name="uploadform" method="post" action="'.qa_self_html().'">
-												<input name="commentid" id="commentid" type="text" placeholder="'.qa_lang('q2apro_comment_to_answer_lang/input_placeholder').'" autofocus>
-												<input name="withthread" id="withthread" type="checkbox" checked="true"> 
-												<label for="withthread">'.qa_lang('q2apro_comment_to_answer_lang/move_thread').'</label><br />
+												<input name="commentid" id="commentid" type="text" placeholder="'.qa_lang('q2apro_comment_to_answer_lang/input_placeholder').'" autofocus required>
 												<br />
-												<input type="submit" value="'.qa_lang('q2apro_comment_to_answer_lang/convertbtn').'" class="btnblue">
+												<br />
+												<label for="withthread">
+													<input name="withthread" id="withthread" type="checkbox" checked="true"> 
+													'.qa_lang('q2apro_comment_to_answer_lang/move_thread').'
+												</label>
+												<br /><br />
+												<input type="submit" value="'.qa_lang('q2apro_comment_to_answer_lang/convertbtn').'" class="qa-form-light-button">
 											</form>
 										 </div>';
 			return $qa_content;

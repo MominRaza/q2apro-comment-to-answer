@@ -1,0 +1,14 @@
+{
+    "name": "Comment to Answer",
+    "uri": "https://github.com/q2apro/q2a-comment-to-answer",
+    "description": "Converts a comment to an answer, optionally moves the succeeding comments",
+    "version": "0.4",
+    "date": "2014-02-23",
+    "author": "q2apro.com",
+    "author_uri": "http://www.q2apro.com/",
+    "license": "GPLv3",
+    "update_uri": "https://raw.github.com/q2apro/q2a-comment-to-answer/master/qa-plugin.php",
+    "min_q2a": "1.5",
+    "min_php": "5.1",
+    "load_order": "after_db_init"
+}

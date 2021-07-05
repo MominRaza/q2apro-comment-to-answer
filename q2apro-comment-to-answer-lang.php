@@ -1,15 +1,5 @@
 <?php
 /*
-	Plugin Name: Comment to Answer
-	Plugin URI: https://github.com/q2apro/q2a-comment-to-answer
-	Plugin Description: Converts a comment to an answer, optionally moves the succeeding comments
-	Plugin Version: 0.4
-	Plugin Date: 2014-02-23
-	Plugin Author: q2apro.com
-	Plugin Author URI: http://www.q2apro.com/
-	Plugin License: GPLv3
-	Plugin Minimum Question2Answer Version: 1.5
-	Plugin Update Check URI: https://raw.github.com/q2apro/q2a-comment-to-answer/master/qa-plugin.php
 
 	This program is free software. You can redistribute and modify it 
 	under the terms of the GNU General Public License.
